@@ -304,6 +304,8 @@ def segments2boxes(segments):
     for s in segments:
         x, y = s.T  # segment xy
         boxes.append([x.min(), y.min(), x.max(), y.max()])  # cls, xyxy
+    if not boxes:
+        return np.zeros((0, 4))
     return xyxy2xywh(np.array(boxes))  # cls, xywh
 
 
